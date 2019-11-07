@@ -1,0 +1,80 @@
+﻿<Page
+    x:Class="TOM.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TOM"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+
+        <Rectangle Fill="{StaticResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}"
+                   Grid.RowSpan="3"
+                   />
+        <Rectangle Fill="{StaticResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"
+                   Grid.Row="2"
+                   Grid.Column="2"
+                   />
+
+        <TextBlock x:Name="Greeting"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   TextWrapping="Wrap"
+                   Margin="24,0,0,24"
+                   Style="{StaticResource HeaderTextBlockStyle}">
+            <Run>Welcome to</Run>
+            <Run Foreground="{ThemeResource SystemAccentColor}">TOM</Run>
+        </TextBlock>
+
+        <TextBlock x:Name="AssignmentsHeader"
+                   Text="Assignments"
+                   Margin="24,0,0,24"
+                   VerticalAlignment="Bottom"
+                   Style="{StaticResource SubheaderTextBlockStyle}"/>
+
+        <ListView x:Name="ContactsLV" ItemsSource="{x:Bind _assignments}" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Assignment">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <SymbolIcon Grid.Column="0" Grid.RowSpan="2" Symbol="Edit" Width="32"
+                    Height="32" HorizontalAlignment="Center" VerticalAlignment="Center"></SymbolIcon>
+                        <TextBlock Grid.Column="1" Text="{x:Bind Title}" Margin="12,6,0,0" 
+                    Style="{ThemeResource BaseTextBlockStyle}"/>
+                        <TextBlock  Grid.Column="1" Grid.Row="1" Text="{x:Bind DueDate}" Margin="12,0,0,6" 
+                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+
+</Page>
