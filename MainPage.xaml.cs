@@ -29,10 +29,16 @@ namespace TOM
         }
 
         private ObservableCollection<Assignment> _assignments = new ObservableCollection<Assignment>();
+        private ObservableCollection<Budget> _budgets = new ObservableCollection<Budget>();
 
-        public ObservableCollection<Assignment> Contacts
+        public ObservableCollection<Assignment> Assignments
         {
             get { return this._assignments; }
+        }
+
+        public ObservableCollection<Budget> Budgets
+        {
+            get { return this._budgets; }
         }
 
         // This method should be defined within your main page class.
@@ -42,22 +48,26 @@ namespace TOM
 
             // Instead of hard coded items, the data could be pulled 
             // asynchronously from a database or the internet.
-            Contacts.Add(new Assignment("Math Homework", "11/8/2019"));
-            Contacts.Add(new Assignment("Math Homework 2", "11/8/2019"));
-            Contacts.Add(new Assignment("Math Homework 3", "11/8/2019"));
-            Contacts.Add(new Assignment("Math Homework 4", "11/8/2019"));
-            Contacts.Add(new Assignment("Math Homework 5", "11/8/2019"));
-            Contacts.Add(new Assignment("Reading Assignment", "11/9/2019"));
-            Contacts.Add(new Assignment("Reading Assignment 2", "11/9/2019"));
-            Contacts.Add(new Assignment("Reading Assignment 3", "11/9/2019"));
-            Contacts.Add(new Assignment("Reading Assignment 4", "11/9/2019"));
-            Contacts.Add(new Assignment("Reading Assignment 5", "11/9/2019"));
-            Contacts.Add(new Assignment("Reading Assignment 6", "11/9/2019"));
-            Contacts.Add(new Assignment("Reading Assignment 7", "11/9/2019"));
-            Contacts.Add(new Assignment("Reading Assignment 8", "11/9/2019"));
-            Contacts.Add(new Assignment("Reading Assignment 9", "11/9/2019"));
-            Contacts.Add(new Assignment("Reading Assignment 10", "11/9/2019"));
-            Contacts.Add(new Assignment("Final", "11/20/2019"));
+            Assignments.Add(new Assignment("Math Homework", "11/8/2019"));
+            Assignments.Add(new Assignment("Math Homework 2", "11/8/2019"));
+            Assignments.Add(new Assignment("Math Homework 3", "11/8/2019"));
+            Assignments.Add(new Assignment("Math Homework 4", "11/8/2019"));
+            Assignments.Add(new Assignment("Math Homework 5", "11/8/2019"));
+            Assignments.Add(new Assignment("Reading Assignment", "11/9/2019"));
+            Assignments.Add(new Assignment("Reading Assignment 2", "11/9/2019"));
+            Assignments.Add(new Assignment("Reading Assignment 3", "11/9/2019"));
+            Assignments.Add(new Assignment("Reading Assignment 4", "11/9/2019"));
+            Assignments.Add(new Assignment("Reading Assignment 5", "11/9/2019"));
+            Assignments.Add(new Assignment("Reading Assignment 6", "11/9/2019"));
+            Assignments.Add(new Assignment("Reading Assignment 7", "11/9/2019"));
+            Assignments.Add(new Assignment("Reading Assignment 8", "11/9/2019"));
+            Assignments.Add(new Assignment("Reading Assignment 9", "11/9/2019"));
+            Assignments.Add(new Assignment("Reading Assignment 10", "11/9/2019"));
+            Assignments.Add(new Assignment("Final", "11/20/2019"));
+
+            Budgets.Add(new Budget("Groceries", 200, 50));
+            Budgets.Add(new Budget("Entertainment", 75, 20));
+            Budgets.Add(new Budget("Mortgage", 750, 2000));
         }
     }
 }

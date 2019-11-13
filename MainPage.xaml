@@ -9,9 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
-
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*" />
             <ColumnDefinition Width="5*"/>
@@ -22,8 +19,6 @@
             <RowDefinition Height="5*"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-
-
 
         <Rectangle Fill="{StaticResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}"
                    Grid.RowSpan="3"
@@ -51,7 +46,7 @@
                    VerticalAlignment="Bottom"
                    Style="{StaticResource SubheaderTextBlockStyle}"/>
 
-        <ListView x:Name="ContactsLV" ItemsSource="{x:Bind _assignments}" Grid.Row="1">
+        <ListView x:Name="AssignmentsLV" ItemsSource="{x:Bind _assignments}" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:Assignment">
                     <Grid>
@@ -69,6 +64,23 @@
                     Style="{ThemeResource BaseTextBlockStyle}"/>
                         <TextBlock  Grid.Column="1" Grid.Row="1" Text="{x:Bind DueDate}" Margin="12,0,0,6" 
                     Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="BudgettingLV" ItemsSource="{x:Bind _budgets}" Grid.Column="1" Grid.Row="1" SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Budget">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{x:Bind Name}" Margin="12,6,0,0" 
+                    Style="{ThemeResource HeaderTextBlockStyle}"/>
+                        <TextBlock Grid.Row="1" Text="{x:Bind BudgetString}" Margin="12,0,0,6" 
+                    Style="{ThemeResource SubheaderTextBlockStyle}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
