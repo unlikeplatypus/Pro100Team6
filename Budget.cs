@@ -11,12 +11,19 @@ namespace TOM
         private string name;
         private int max;
         private int current;
-        
+
+       
+
+
         public Budget(string name, int max, int current)
         {
             this.name = name;
             this.max = max;
             this.current = current;
+        }
+        public string BudgetString
+        {
+            get { return "$" + current + " / $" + max; }
         }
 
         public string Name
@@ -37,9 +44,6 @@ namespace TOM
             set { current = value; }
         }
 
-        public string BudgetString
-        {
-            get { return "$" + current + " / $" + max; }
-        }
+
     }
 }

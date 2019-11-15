@@ -69,5 +69,27 @@ namespace TOM
             Budgets.Add(new Budget("Entertainment", 75, 20));
             Budgets.Add(new Budget("Mortgage", 750, 2000));
         }
+
+        public int BudgetMaxTotal()
+        {
+            int max = 0;
+            foreach (Budget budget in Budgets)
+            {
+                max += budget.Max;
+            }
+
+            return max;
+        }
+
+        public int BudgetUsedTotal()
+        {
+            int amount = 0;
+            foreach (Budget budget in Budgets)
+            {
+                amount += budget.Current;
+            }
+
+            return amount;
+        }
     }
 }
