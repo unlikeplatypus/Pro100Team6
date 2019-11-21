@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TOM
 {
-    class Course : CanvasItem
+    public class Course : CanvasItem
     {
         [JsonProperty(PropertyName = "course_code")]
         public string CourseCode { get; set; }
@@ -18,14 +18,14 @@ namespace TOM
 
         public Assignment[] Assignments { get; set; }
 
-        public void ParseAssignments(User user, String domain)
+        public void ParseAssignments(User user)
         {
-            string assignmentURL = $"https://{domain}/api/v1/courses/{Id}/assignments?access_token={user.Token};per_page=100";
-            var restClient2 = new RestClient(assignmentURL);
-            var request2 = new RestRequest(Method.GET);
-            var response2 = restClient2.Execute<List<Assignment>>(request2);
-            var upcomingAssignments = response2.Data.Where(duedate => duedate.Due_at >= DateTime.Now).OrderBy(date => date.Due_at);
-            Assignments = upcomingAssignments.ToArray();
+                string assignmentURL = $"https://lms.neumont.edu/api/v1/courses/{Id}/assignments?access_token={user.Token};per_page=100";
+                var restClient2 = new RestClient(assignmentURL);
+                var request2 = new RestRequest(Method.GET);
+                var response2 = restClient2.Execute<List<Assignment>>(request2);
+                var upcomingAssignments = response2.Data.Where(duedate => duedate.Due_at >= DateTime.Now).OrderBy(date => date.Due_at);
+                Assignments = upcomingAssignments.ToArray();
         }
     }
 }

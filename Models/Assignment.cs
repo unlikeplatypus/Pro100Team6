@@ -4,7 +4,7 @@ using System;
 
 namespace TOM
 {
-    internal class Assignment : CanvasItem
+    public class Assignment : CanvasItem
     {
         [JsonProperty(PropertyName = "due_at")]
         public DateTime Due_at { get; set; }
