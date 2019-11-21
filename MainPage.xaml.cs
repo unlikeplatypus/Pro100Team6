@@ -14,13 +14,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace TOM
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
@@ -30,8 +25,11 @@ namespace TOM
 
         private ObservableCollection<Assignment> _assignments = new ObservableCollection<Assignment>();
         private ObservableCollection<Budget> _budgets = new ObservableCollection<Budget>();
+        private User user = new User("1~EqBFIQ0fbgKL42cifKmZakSozFFgIVrXgBq57cuzB3jQtK1RomHcZDJ37Pc8Nspx", "lms.neumont.edu");
+        private string courseOutput = "";
+        private string assignmentOutput = "";
 
-        public ObservableCollection<Assignment> Assignments
+        private ObservableCollection<Assignment> Assignments
         {
             get { return this._assignments; }
         }
@@ -46,24 +44,8 @@ namespace TOM
         {
             base.OnNavigatedTo(e);
 
-            // Instead of hard coded items, the data could be pulled 
-            // asynchronously from a database or the internet.
-            Assignments.Add(new Assignment("Math Homework", "11/8/2019"));
-            Assignments.Add(new Assignment("Math Homework 2", "11/8/2019"));
-            Assignments.Add(new Assignment("Math Homework 3", "11/8/2019"));
-            Assignments.Add(new Assignment("Math Homework 4", "11/8/2019"));
-            Assignments.Add(new Assignment("Math Homework 5", "11/8/2019"));
-            Assignments.Add(new Assignment("Reading Assignment", "11/9/2019"));
-            Assignments.Add(new Assignment("Reading Assignment 2", "11/9/2019"));
-            Assignments.Add(new Assignment("Reading Assignment 3", "11/9/2019"));
-            Assignments.Add(new Assignment("Reading Assignment 4", "11/9/2019"));
-            Assignments.Add(new Assignment("Reading Assignment 5", "11/9/2019"));
-            Assignments.Add(new Assignment("Reading Assignment 6", "11/9/2019"));
-            Assignments.Add(new Assignment("Reading Assignment 7", "11/9/2019"));
-            Assignments.Add(new Assignment("Reading Assignment 8", "11/9/2019"));
-            Assignments.Add(new Assignment("Reading Assignment 9", "11/9/2019"));
-            Assignments.Add(new Assignment("Reading Assignment 10", "11/9/2019"));
-            Assignments.Add(new Assignment("Final", "11/20/2019"));
+            user.Username = "TestName";
+            SetAssignments();
 
             Budgets.Add(new Budget("Groceries", 200, 50));
             Budgets.Add(new Budget("Entertainment", 75, 20));
@@ -91,5 +73,60 @@ namespace TOM
 
             return amount;
         }
+
+        public void Idk()
+        {
+            Course[] courseTest = user.Courses;
+
+            courseOutput = courseTest[0].Name;
+
+            foreach (Assignment assgn in courseTest[0].Assignments)
+            {
+                assignmentOutput += assgn.Name + "\n";
+            }
+        }
+
+        #region PFM, do not touch
+        public void SetAssignments()
+        {
+            Course[] courses = user.Courses;
+            Assignment[] newArray;
+
+            foreach (Course course in courses)
+                for(int i = 0; i < course.Assignments.Length; i++)
+                {
+                    Assignments.Add(course.Assignments[i]);
+                }
+
+            newArray = SortAssignments(Assignments.ToArray<Assignment>());
+
+            Assignments.Clear();
+
+            for (int i = 0; i < newArray.Length; i++)
+            {
+                Assignments.Add(newArray[i]);
+            }
+        }
+
+        private Assignment[] SortAssignments(Assignment[] asgns)
+        {
+            List<Assignment> sorter = new List<Assignment>();
+            Assignment[] newArray = new Assignment[asgns.Length];
+
+            foreach (Assignment asgn in asgns)
+            {
+                sorter.Add(asgn);
+            }
+
+            sorter.Sort((x, y) => DateTime.Compare(x.Due_at, y.Due_at));
+
+            for (int i = 0; i < asgns.Length; i++)
+            {
+                newArray[i] = sorter[i];
+            }
+
+            return newArray;
+        }
+        #endregion
     }
 }

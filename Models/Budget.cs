@@ -12,9 +12,6 @@ namespace TOM
         private int max;
         private int current;
 
-       
-
-
         public Budget(string name, int max, int current)
         {
             this.name = name;
@@ -43,7 +40,5 @@ namespace TOM
             get { return current; }
             set { current = value; }
         }
-
-
     }
 }

@@ -31,8 +31,8 @@
                    TextWrapping="Wrap"
                    Margin="24,0,0,24"
                    Style="{StaticResource HeaderTextBlockStyle}">
-            <Run>Welcome to</Run>
-            <Run Foreground="{ThemeResource SystemAccentColor}">TOM</Run>
+            <Run>Welcome, </Run>
+            <Run Foreground="{ThemeResource SystemAccentColor}" Text="{x:Bind user.Username}"></Run><Run>.</Run>
         </TextBlock>
 
         <TextBlock x:Name="AssignmentsHeader"
@@ -55,9 +55,9 @@
                         </Grid.ColumnDefinitions>
                         <SymbolIcon Grid.Column="0" Grid.RowSpan="2" Symbol="Edit" Width="32"
                     Height="32" HorizontalAlignment="Center" VerticalAlignment="Center"></SymbolIcon>
-                        <TextBlock Grid.Column="1" Text="{x:Bind Title}" Margin="12,6,0,0" 
+                        <TextBlock Grid.Column="1" Text="{x:Bind Name}" Margin="12,6,0,0" 
                     Style="{ThemeResource BaseTextBlockStyle}"/>
-                        <TextBlock  Grid.Column="1" Grid.Row="1" Text="{x:Bind DueDate}" Margin="12,0,0,6" 
+                        <TextBlock  Grid.Column="1" Grid.Row="1" Text="{x:Bind Due_at}" Margin="12,0,0,6" 
                     Style="{ThemeResource BodyTextBlockStyle}"/>
                     </Grid>
                 </DataTemplate>
@@ -80,8 +80,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <TextBlock x:Name="BudgetText" Grid.Row="1" Grid.Column="2" Text="Your current budget." 
-                   Style="{ThemeResource SubheaderTextBlockStyle}" Margin="12,6,0,0"/>
+        <TextBlock x:Name="BudgetText" Grid.Row="1" Grid.Column="2" Text="{x:Bind courseOutput}" 
+                   Style="{ThemeResource TitleTextBlockStyle}" Margin="12,6,0,0"/>
+        <TextBlock x:Name="rightSubText" Grid.Row="1" Grid.Column="2" Text="{x:Bind assignmentOutput}"
+                   Style="{ThemeResource BodyTextBlockStyle}" Margin="12,200,0,0"/>
 
     </Grid>
 
