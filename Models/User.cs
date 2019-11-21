@@ -7,23 +7,20 @@ using System.Threading.Tasks;
 
 namespace TOM
 {
-    class User
+    public class User
     {
-        public string Username { get; set; }
-        public string Passoword { get; set; }
-        public string Token { get; private set; }
-
+        public string Token { get; set; }
         public Course[] Courses { get; set; }
 
-        public User(String token, string domain)
+        public User(string token)
         {
             Token = token;
-            ParseCourses(domain);
+            ParseCourses();
         }
 
-        public void ParseCourses(String domain)
+        public void ParseCourses()
         {
-            string url = $"https://{domain}/api/v1/courses.json?access_token={Token};per_page=100";
+            string url = $"https://lms.neumont.edu/api/v1/courses.json?access_token={Token};per_page=100";
             var restClient = new RestClient(url);
             var request = new RestRequest(Method.GET);
             var response = restClient.Execute<List<Course>>(request);
@@ -31,7 +28,7 @@ namespace TOM
             Courses = currentClassList.ToArray();
             foreach (Course c in Courses)
             {
-                c.ParseAssignments(this, domain);
+                c.ParseAssignments(this);
             }
         }
     }
