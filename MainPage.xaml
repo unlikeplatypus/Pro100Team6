@@ -32,7 +32,7 @@
                    Margin="24,0,0,24"
                    Style="{StaticResource HeaderTextBlockStyle}">
             <Run>Welcome, </Run>
-            <Run Foreground="{ThemeResource SystemAccentColor}" Text="{x:Bind user.Username}"></Run><Run>.</Run>
+            <Run Foreground="{ThemeResource SystemAccentColor}" Text="Test Name"></Run><Run>.</Run>
         </TextBlock>
 
         <TextBlock x:Name="AssignmentsHeader"

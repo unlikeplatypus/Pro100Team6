@@ -18,16 +18,16 @@ namespace TOM
 {
     public sealed partial class MainPage : Page
     {
+        private ObservableCollection<Assignment> _assignments = new ObservableCollection<Assignment>();
+        private ObservableCollection<Budget> _budgets = new ObservableCollection<Budget>();
+        public  User user = new User("1~EqBFIQ0fbgKL42cifKmZakSozFFgIVrXgBq57cuzB3jQtK1RomHcZDJ37Pc8Nspx");
+        private string courseOutput = "";
+        private string assignmentOutput = "";
+
         public MainPage()
         {
             this.InitializeComponent();
         }
-
-        private ObservableCollection<Assignment> _assignments = new ObservableCollection<Assignment>();
-        private ObservableCollection<Budget> _budgets = new ObservableCollection<Budget>();
-        private User user = new User("1~EqBFIQ0fbgKL42cifKmZakSozFFgIVrXgBq57cuzB3jQtK1RomHcZDJ37Pc8Nspx", "lms.neumont.edu");
-        private string courseOutput = "";
-        private string assignmentOutput = "";
 
         private ObservableCollection<Assignment> Assignments
         {
@@ -44,7 +44,6 @@ namespace TOM
         {
             base.OnNavigatedTo(e);
 
-            user.Username = "TestName";
             SetAssignments();
 
             Budgets.Add(new Budget("Groceries", 200, 50));
