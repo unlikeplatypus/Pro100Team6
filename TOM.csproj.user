@@ -4,4 +4,14 @@
     <DeviceId>30f105c9-681e-420b-a277-7c086ead8a4e</DeviceId>
     <UseEmulator>true</UseEmulator>
   </PropertyGroup>
+  <PropertyGroup>
+    <Source>C:\Users\Christian Gyles\OneDrive - Neumont College of Computer Science\FA2019-03 - Introductory Software Projects\Workspace\Assets\TomLogo.png</Source>
+    <SmallTileSource>C:\Users\Christian Gyles\OneDrive - Neumont College of Computer Science\FA2019-03 - Introductory Software Projects\Workspace\Assets\TomLogo.png</SmallTileSource>
+    <MediumTileSource>C:\Users\Christian Gyles\OneDrive - Neumont College of Computer Science\FA2019-03 - Introductory Software Projects\Workspace\Assets\TomLogo.png</MediumTileSource>
+    <WideTileSource>C:\Users\Christian Gyles\OneDrive - Neumont College of Computer Science\FA2019-03 - Introductory Software Projects\Workspace\Assets\TomLogo.png</WideTileSource>
+    <LargeTileSource>C:\Users\Christian Gyles\OneDrive - Neumont College of Computer Science\FA2019-03 - Introductory Software Projects\Workspace\Assets\TomLogo.png</LargeTileSource>
+    <AppIconSource>C:\Users\Christian Gyles\OneDrive - Neumont College of Computer Science\FA2019-03 - Introductory Software Projects\Workspace\Assets\TomLogo.png</AppIconSource>
+    <SplashScreenSource>C:\Users\Christian Gyles\OneDrive - Neumont College of Computer Science\FA2019-03 - Introductory Software Projects\Workspace\Assets\TomLogo.png</SplashScreenSource>
+    <PackageLogoSource>C:\Users\Christian Gyles\OneDrive - Neumont College of Computer Science\FA2019-03 - Introductory Software Projects\Workspace\Assets\TomLogo.png</PackageLogoSource>
+  </PropertyGroup>
 </Project>

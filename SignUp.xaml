@@ -20,6 +20,16 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Image Source="Assets/tom.png"
+               Stretch="Fill"
+               Grid.ColumnSpan="3"
+               Grid.RowSpan="3"/>
+
+        <Rectangle Grid.RowSpan="3"
+                   Grid.ColumnSpan="3"
+                   Fill="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}"
+                   Opacity="30"/>
+
         <TextBlock Text="Sign Up"
                    Grid.Column="1"
                    VerticalAlignment="Bottom"
