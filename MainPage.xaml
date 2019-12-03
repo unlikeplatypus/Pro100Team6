@@ -9,6 +9,83 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="7*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Fill="{StaticResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}"
+                   Grid.RowSpan="3"
+                   />
+
+        <TextBlock x:Name="Greeting"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   TextWrapping="Wrap"
+                   Margin="24,0,0,24"
+                   Style="{StaticResource HeaderTextBlockStyle}">
+            <Run>Welcome, </Run>
+            <Run Foreground="{ThemeResource SystemAccentColor}" Text="Test Name"></Run><Run>.</Run>
+        </TextBlock>
+
+        <TextBlock x:Name="AssignmentsHeader"
+                   Text="Assignments"
+                   Margin="24,0,0,24"
+                   VerticalAlignment="Bottom"
+                   Style="{StaticResource SubheaderTextBlockStyle}"/>
+
+        <ListView x:Name="AssignmentsLV" ItemsSource="{x:Bind _assignments}" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Assignment">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <SymbolIcon Grid.Column="0" Grid.RowSpan="2" Symbol="Edit" Width="32"
+                    Height="32" HorizontalAlignment="Center" VerticalAlignment="Center"></SymbolIcon>
+                        <TextBlock Grid.Column="1" Text="{x:Bind Name}" Margin="12,6,0,0" 
+                    Style="{ThemeResource BaseTextBlockStyle}"/>
+                        <TextBlock  Grid.Column="1" Grid.Row="1" Text="{x:Bind Due_at}" Margin="12,0,0,6" 
+                    Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="BudgettingLV" ItemsSource="{x:Bind _budgets}" Grid.Column="1" Grid.Row="1" SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Budget">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{x:Bind Name}" Margin="12,6,0,0" 
+                    Style="{ThemeResource SubheaderTextBlockStyle}"/>
+                        <TextBlock Grid.Row="1" Text="{x:Bind BudgetString}" Margin="12,0,0,6" 
+                    Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <TextBlock x:Name="BudgetText" Grid.Row="1" Grid.Column="2" Text="{x:Bind courseOutput}" 
+                   Style="{ThemeResource TitleTextBlockStyle}" Margin="12,6,0,0"/>
+        <TextBlock x:Name="rightSubText" Grid.Row="1" Grid.Column="2" Text="{x:Bind assignmentOutput}"
+                   Style="{ThemeResource BodyTextBlockStyle}" Margin="12,200,0,0"/>
 
     </Grid>
+
+
 </Page>
