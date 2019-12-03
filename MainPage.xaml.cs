@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -127,5 +128,15 @@ namespace TOM
             return newArray;
         }
         #endregion
+
+        private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var uri = new Uri(((sender as Grid).DataContext as Assignment).Html_url);
+            LaunchSite(uri);
+        }
+        private async void LaunchSite(Uri uri)
+        {
+            await Windows.System.Launcher.LaunchUriAsync(uri);
+        }
     }
 }
