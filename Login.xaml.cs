@@ -17,9 +17,6 @@ using Windows.UI.Xaml.Navigation;
 
 namespace TOM
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Login : Page
     {
         public Login()
@@ -30,6 +27,29 @@ namespace TOM
         private void HyperlinkButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(SignUp));
+        }
+        
+        private async void SignIn_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            try
+            {
+                StorageFile file = await storageFolder.GetFileAsync($"{username.Text}.txt");
+                CheckPassword(file);
+            }
+            catch
+            {
+            }
+        }
+
+        private async void CheckPassword(StorageFile file)
+        {
+            string text = await Windows.Storage.FileIO.ReadTextAsync(file);
+            string[] strings = text.Split(',');
+
+            if (strings[0] == pass.Password)
+            {
+                this.Frame.Navigate(typeof(MainPage), strings[1]);
+            }
         }
     }
 }
