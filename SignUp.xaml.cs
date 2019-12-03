@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,6 +23,7 @@ namespace TOM
     /// </summary>
     public sealed partial class SignUp : Page
     {
+        private StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
         public SignUp()
         {
             this.InitializeComponent();
@@ -44,7 +46,8 @@ namespace TOM
                 catch
                 {
                     SaveInfo();
-                    this.Frame.Navigate(typeof(MainPage), token.Text);
+                    MainPage.user = new User(token.Text);
+                    this.Frame.Navigate(typeof(MainPage));
                 }
             }
         }
@@ -84,7 +87,6 @@ namespace TOM
             string toke = token.Text;
 
             StorageFile settingsFile = await storageFolder.CreateFileAsync($"{name}.txt", Windows.Storage.CreationCollisionOption.FailIfExists);
-            Debug.WriteLine(settingsFile.Path);
 
             File.AppendAllText(settingsFile.Path, $"{password},{toke}");
         }

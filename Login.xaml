@@ -26,12 +26,14 @@
                    HorizontalAlignment="Center"
                    Style="{ThemeResource HeaderTextBlockStyle}"/>
 
-        <StackPanel x:Name="username"
+        <StackPanel 
                     Grid.Row="1"
                     Grid.Column="1"
                     Grid.RowSpan="2"
                     Margin="0,12,0,0">
-            <TextBox PlaceholderText="Username"
+            <TextBox
+                     x:Name="username"
+                     PlaceholderText="Username"
                      VerticalAlignment="Top"
                      Margin="0, 24, 0, 0"
                      Style="{ThemeResource ComboBoxTextBoxStyle}"/>

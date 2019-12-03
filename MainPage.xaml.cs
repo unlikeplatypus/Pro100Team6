@@ -20,16 +20,13 @@ namespace TOM
     {
         private ObservableCollection<Assignment> _assignments = new ObservableCollection<Assignment>();
         private ObservableCollection<Budget> _budgets = new ObservableCollection<Budget>();
-        private string token;
-        public User user;
+        static public User user = new User("1~EqBFIQ0fbgKL42cifKmZakSozFFgIVrXgBq57cuzB3jQtK1RomHcZDJ37Pc8Nspx");
         private string courseOutput = "";
         private string assignmentOutput = "";
 
         public MainPage()
         {
             this.InitializeComponent();
-            user = new User(token);
-            SetAssignments();
         }
 
         private ObservableCollection<Assignment> Assignments
@@ -45,7 +42,13 @@ namespace TOM
         // This method should be defined within your main page class.
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            token = e.Paramater.ToString();
+            base.OnNavigatedTo(e);
+
+            SetAssignments();
+
+            Budgets.Add(new Budget("Groceries", 200, 50));
+            Budgets.Add(new Budget("Entertainment", 75, 20));
+            Budgets.Add(new Budget("Mortgage", 750, 2000));
         }
 
         public int BudgetMaxTotal()
@@ -89,7 +92,7 @@ namespace TOM
             Assignment[] newArray;
 
             foreach (Course course in courses)
-                for(int i = 0; i < course.Assignments.Length; i++)
+                for (int i = 0; i < course.Assignments.Length; i++)
                 {
                     Assignments.Add(course.Assignments[i]);
                 }

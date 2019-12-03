@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -19,6 +20,7 @@ namespace TOM
 {
     public sealed partial class Login : Page
     {
+        private StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
         public Login()
         {
             this.InitializeComponent();
@@ -48,7 +50,8 @@ namespace TOM
 
             if (strings[0] == pass.Password)
             {
-                this.Frame.Navigate(typeof(MainPage), strings[1]);
+                MainPage.user = new User(strings[1]);
+                this.Frame.Navigate(typeof(MainPage));
             }
         }
     }
