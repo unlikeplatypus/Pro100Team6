@@ -31,5 +31,62 @@ namespace TOM
         {
             this.Frame.Navigate(typeof(Login));
         }
+        
+        
+        private async void SignIn_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (CheckForEmpties() && CheckValidPassword())
+            {
+                try
+                {
+                    StorageFile file = await storageFolder.GetFileAsync($"{username.Text}.txt");
+                }
+                catch
+                {
+                    SaveInfo();
+                    this.Frame.Navigate(typeof(MainPage), token.Text);
+                }
+            }
+        }
+
+        private bool CheckValidPassword()
+        {
+            bool passIsValid = false;
+            if (pass.Password == confirm.Password)
+            {
+                passIsValid = true;
+            }
+            foreach (Char c in pass.Password)
+            {
+                if (c == ',')
+                {
+                    passIsValid = false;
+                }
+            }
+            return passIsValid;
+        }
+        private bool CheckForEmpties()
+        {
+            if (username.Text.Trim() == "" || pass.Password.Trim() == "" || token.Text.Trim() == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private async void SaveInfo()
+        {
+            string name = username.Text;
+            string password = pass.Password;
+            string toke = token.Text;
+
+            StorageFile settingsFile = await storageFolder.CreateFileAsync($"{name}.txt", Windows.Storage.CreationCollisionOption.FailIfExists);
+            Debug.WriteLine(settingsFile.Path);
+
+            File.AppendAllText(settingsFile.Path, $"{password},{toke}");
+        }
     }
 }
