@@ -21,13 +21,14 @@ namespace TOM
         private ObservableCollection<Assignment> _assignments = new ObservableCollection<Assignment>();
         private ObservableCollection<Budget> _budgets = new ObservableCollection<Budget>();
         private string token;
+        public User user;
         private string courseOutput = "";
         private string assignmentOutput = "";
 
         public MainPage()
         {
             this.InitializeComponent();
-            public  User user = new User(token);
+            user = new User(token);
             SetAssignments();
         }
 
