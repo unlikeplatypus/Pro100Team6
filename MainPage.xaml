@@ -44,7 +44,8 @@
         <ListView x:Name="AssignmentsLV" ItemsSource="{x:Bind _assignments}" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:Assignment">
-                    <Grid>
+                    <Grid
+                        Tapped="Grid_Tapped">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
@@ -64,27 +65,42 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView x:Name="BudgettingLV" ItemsSource="{x:Bind _budgets}" Grid.Column="1" Grid.Row="1" SelectionMode="None">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:Budget">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Text="{x:Bind Name}" Margin="12,6,0,0" 
-                    Style="{ThemeResource SubheaderTextBlockStyle}"/>
-                        <TextBlock Grid.Row="1" Text="{x:Bind BudgetString}" Margin="12,0,0,6" 
-                    Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <TextBlock x:Name="BudgetText" Grid.Row="1" Grid.Column="2" Text="{x:Bind courseOutput}" 
-                   Style="{ThemeResource TitleTextBlockStyle}" Margin="12,6,0,0"/>
-        <TextBlock x:Name="rightSubText" Grid.Row="1" Grid.Column="2" Text="{x:Bind assignmentOutput}"
-                   Style="{ThemeResource BodyTextBlockStyle}" Margin="12,200,0,0"/>
-
+        <TextBlock 
+                   Grid.Column="1"
+                   Grid.Row="2"
+                   Height="200"
+                   VerticalAlignment="Bottom"
+                   x:Name="timerBox"/>
+        <Button x:Name="startButton"
+                Grid.Column="2"
+                Grid.Row="2"
+                Height="100"
+                Width="100"
+                FontSize="60"
+                Content="Start"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Bottom" 
+                Click="startButton_Click"/>
+        <Button x:Name="stopButton"
+                Grid.Column="2"
+                Grid.Row="2"
+                Height="100"
+                Width="100"
+                FontSize="60"
+                Content="Stop"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom" 
+                Click="stopButton_Click"/>
+        <Button x:Name="resetButton"
+                Grid.Column="2"
+                Grid.Row="2"
+                Height="100"
+                Width="100"
+                FontSize="60"
+                Content="Reset"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom" 
+                Click="resetButton_Click"/>
     </Grid>
 
 
