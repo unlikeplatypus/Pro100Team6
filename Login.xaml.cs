@@ -36,6 +36,7 @@ namespace TOM
             try
             {
                 StorageFile file = await storageFolder.GetFileAsync($"{username.Text}.txt");
+                MainPage.username = username.Text;
                 CheckPassword(file);
             }
             catch
@@ -50,6 +51,7 @@ namespace TOM
 
             if (strings[0] == pass.Password)
             {
+                
                 MainPage.user = new User(strings[1]);
                 this.Frame.Navigate(typeof(MainPage));
             }

@@ -6,7 +6,6 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using TimerPractice.Model;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Notifications;
@@ -23,8 +22,8 @@ namespace TOM
     public sealed partial class MainPage : Page
     {
         private ObservableCollection<Assignment> _assignments = new ObservableCollection<Assignment>();
-        private ObservableCollection<Budget> _budgets = new ObservableCollection<Budget>();
-        static public User user = new User("1~EqBFIQ0fbgKL42cifKmZakSozFFgIVrXgBq57cuzB3jQtK1RomHcZDJ37Pc8Nspx");
+        public static User user = new User("1~EqBFIQ0fbgKL42cifKmZakSozFFgIVrXgBq57cuzB3jQtK1RomHcZDJ37Pc8Nspx");
+        public static string username = "User";
         private string courseOutput = "";
         private string assignmentOutput = "";
         private Clock clock = new Clock();
@@ -33,6 +32,7 @@ namespace TOM
         public MainPage()
         {
             this.InitializeComponent();
+            UserNameSlot.Text = username;
             ClockSetUp();
         }
 
@@ -41,43 +41,12 @@ namespace TOM
             get { return this._assignments; }
         }
 
-        public ObservableCollection<Budget> Budgets
-        {
-            get { return this._budgets; }
-        }
-
         // This method should be defined within your main page class.
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
             SetAssignments();
-
-            Budgets.Add(new Budget("Groceries", 200, 50));
-            Budgets.Add(new Budget("Entertainment", 75, 20));
-            Budgets.Add(new Budget("Mortgage", 750, 2000));
-        }
-
-        public int BudgetMaxTotal()
-        {
-            int max = 0;
-            foreach (Budget budget in Budgets)
-            {
-                max += budget.Max;
-            }
-
-            return max;
-        }
-
-        public int BudgetUsedTotal()
-        {
-            int amount = 0;
-            foreach (Budget budget in Budgets)
-            {
-                amount += budget.Current;
-            }
-
-            return amount;
         }
 
         public void Idk()
@@ -211,11 +180,7 @@ namespace TOM
         private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var url = new Uri(((sender as Grid).DataContext as Assignment).Html_url);
-            LaunchSite(url);
-        }
-        private async void LaunchSite(Uri uri)
-        {
-            await Windows.System.Launcher.LaunchUriAsync(uri);
+            Browser.Source = url;
         }
 
         private void resetButton_Click(object sender, RoutedEventArgs e)

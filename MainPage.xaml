@@ -17,6 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="6*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Rectangle Fill="{StaticResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}"
@@ -32,7 +33,7 @@
                    Margin="24,0,0,24"
                    Style="{StaticResource HeaderTextBlockStyle}">
             <Run>Welcome, </Run>
-            <Run Foreground="{ThemeResource SystemAccentColor}" Text="Test Name"></Run><Run>.</Run>
+            <Run x:Name="UserNameSlot" Foreground="{ThemeResource SystemAccentColor}" Text="Test Name"></Run><Run>.</Run>
         </TextBlock>
 
         <TextBlock x:Name="AssignmentsHeader"
@@ -65,11 +66,17 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <TextBlock 
-                   Grid.Column="1"
+        <WebView Name="Browser"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 Source="https://lms.neumont.edu/" 
+                 Margin="24"/>
+
+        <TextBlock Grid.Column="1"
                    Grid.Row="2"
-                   Height="200"
                    VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
                    x:Name="timerBox"/>
         <Button x:Name="startButton"
                 Grid.Column="2"

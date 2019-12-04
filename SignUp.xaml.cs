@@ -46,6 +46,7 @@ namespace TOM
                 catch
                 {
                     SaveInfo();
+                    MainPage.username = username.Text;
                     MainPage.user = new User(token.Text);
                     this.Frame.Navigate(typeof(MainPage));
                 }
