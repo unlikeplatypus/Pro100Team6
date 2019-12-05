@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -35,22 +36,9 @@ namespace TOM
         }
         
         
-        private async void SignIn_Tapped(object sender, TappedRoutedEventArgs e)
+        private void SignIn_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (CheckForEmpties() && CheckValidPassword())
-            {
-                try
-                {
-                    StorageFile file = await storageFolder.GetFileAsync($"{username.Text}.txt");
-                }
-                catch
-                {
-                    SaveInfo();
-                    MainPage.username = username.Text;
-                    MainPage.user = new User(token.Text);
-                    this.Frame.Navigate(typeof(MainPage));
-                }
-            }
+            SignIn();
         }
 
         private bool CheckValidPassword()
@@ -90,6 +78,47 @@ namespace TOM
             StorageFile settingsFile = await storageFolder.CreateFileAsync($"{name}.txt", Windows.Storage.CreationCollisionOption.FailIfExists);
 
             File.AppendAllText(settingsFile.Path, $"{password},{toke}");
+        }
+
+        private void Grid_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                SignIn();
+            }
+        }
+
+
+        private async void SignIn()
+        {
+            progressRing.IsActive = true;
+
+            await Task.Delay(TimeSpan.FromSeconds(0.5));
+
+            if (CheckForEmpties() && CheckValidPassword())
+            {
+                try
+                {
+                    StorageFile file = await storageFolder.GetFileAsync($"{username.Text}.txt");
+
+                    passwordStatus.Visibility = Visibility.Visible;
+                    progressRing.IsActive = false;
+
+                }
+                catch
+                {
+                    SaveInfo();
+                    MainPage.username = username.Text;
+                    MainPage.user = new User(token.Text);
+                    this.Frame.Navigate(typeof(MainPage));
+
+                }
+            }
+        }
+
+        private void username_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            passwordStatus.Visibility = Visibility.Collapsed;
         }
     }
 }

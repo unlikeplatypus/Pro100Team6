@@ -75,40 +75,40 @@
 
         <TextBlock Grid.Column="1"
                    Grid.Row="2"
-                   VerticalAlignment="Bottom"
+                   VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    x:Name="timerBox"/>
+
+
         <Button x:Name="startButton"
-                Grid.Column="2"
-                Grid.Row="2"
-                Height="100"
-                Width="100"
-                FontSize="60"
                 Content="Start"
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Bottom" 
-                Click="startButton_Click"/>
-        <Button x:Name="stopButton"
-                Grid.Column="2"
+                Click="startButton_Click"
                 Grid.Row="2"
-                Height="100"
-                Width="100"
-                FontSize="60"
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                Margin="24"
+                FontSize="24"
+                Style="{StaticResource AccentButtonStyle}"/>
+        <Button x:Name="stopButton"
                 Content="Stop"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom" 
+                Grid.Row="2"
+                Grid.Column="2"
+                HorizontalAlignment="Center"
+                Margin="24"
+                FontSize="24"
                 Click="stopButton_Click"/>
         <Button x:Name="resetButton"
-                Grid.Column="2"
-                Grid.Row="2"
-                Height="100"
-                Width="100"
-                FontSize="60"
                 Content="Reset"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom" 
+                Grid.Row="2"
+                Grid.Column="2"
+                HorizontalAlignment="Right"
+                Margin="24"
+                FontSize="24"
                 Click="resetButton_Click"/>
+        <Button Content="Log Out"
+                Tapped="Button_Tapped"
+                Grid.Row="2"
+                Margin="24"/>
     </Grid>
-
 
 </Page>

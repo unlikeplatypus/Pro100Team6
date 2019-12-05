@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using TimerPractice.Model;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Notifications;
@@ -70,6 +71,7 @@ namespace TOM
             foreach (Course course in courses)
                 for (int i = 0; i < course.Assignments.Length; i++)
                 {
+                    course.Assignments[i].Due_at = course.Assignments[i].Due_at.ToLocalTime();
                     Assignments.Add(course.Assignments[i]);
                 }
 
@@ -189,6 +191,11 @@ namespace TOM
             clock.Minutes = 0;
             clock.Hours = 0;
             timerBox.Text = string.Format("{0}:{1}:{2}", clock.Hours.ToString().PadLeft(2, '0'), clock.Minutes.ToString().PadLeft(2, '0'), clock.Seconds.ToString().PadLeft(2, '0'));
+        }
+
+        private void Button_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Login));
         }
     }
 }

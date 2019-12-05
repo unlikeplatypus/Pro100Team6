@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Christian Gyles\\OneDrive - Neumont College of Computer Science\\FA2019-03 - Introductory Software Projects\\Workspace\\TOM.csproj": {}
+    "C:\\Users\\Christian Gyles\\Source\\Repos\\Pro100Team6\\TOM.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Christian Gyles\\OneDrive - Neumont College of Computer Science\\FA2019-03 - Introductory Software Projects\\Workspace\\TOM.csproj": {
+    "C:\\Users\\Christian Gyles\\Source\\Repos\\Pro100Team6\\TOM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Christian Gyles\\OneDrive - Neumont College of Computer Science\\FA2019-03 - Introductory Software Projects\\Workspace\\TOM.csproj",
+        "projectUniqueName": "C:\\Users\\Christian Gyles\\Source\\Repos\\Pro100Team6\\TOM.csproj",
         "projectName": "TOM",
-        "projectPath": "C:\\Users\\Christian Gyles\\OneDrive - Neumont College of Computer Science\\FA2019-03 - Introductory Software Projects\\Workspace\\TOM.csproj",
+        "projectPath": "C:\\Users\\Christian Gyles\\Source\\Repos\\Pro100Team6\\TOM.csproj",
         "packagesPath": "C:\\Users\\Christian Gyles\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Christian Gyles\\OneDrive - Neumont College of Computer Science\\FA2019-03 - Introductory Software Projects\\Workspace\\obj\\",
+        "outputPath": "C:\\Users\\Christian Gyles\\Source\\Repos\\Pro100Team6\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -41,9 +41,21 @@
               "target": "Package",
               "version": "[6.2.9, )"
             },
+            "Microsoft.Toolkit.Uwp.UI.Controls": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "NotificationsExtensions.Win10": {
+              "target": "Package",
+              "version": "[14332.0.2, )"
+            },
+            "QueryString.NET": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             },
             "RestSharp": {
               "target": "Package",

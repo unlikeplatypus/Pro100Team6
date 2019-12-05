@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
@@ -31,17 +32,9 @@ namespace TOM
             this.Frame.Navigate(typeof(SignUp));
         }
         
-        private async void SignIn_Tapped(object sender, TappedRoutedEventArgs e)
+        private void SignIn_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            try
-            {
-                StorageFile file = await storageFolder.GetFileAsync($"{username.Text}.txt");
-                MainPage.username = username.Text;
-                CheckPassword(file);
-            }
-            catch
-            {
-            }
+            SignIn();
         }
 
         private async void CheckPassword(StorageFile file)
@@ -54,6 +47,43 @@ namespace TOM
                 
                 MainPage.user = new User(strings[1]);
                 this.Frame.Navigate(typeof(MainPage));
+            }
+            else
+            {
+                passwordStatus.Visibility = Visibility.Visible;
+                progressRing.IsActive = false;
+            }
+        }
+
+        private void pass_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            passwordStatus.Visibility = Visibility.Collapsed;
+        }
+
+        private void Grid_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                SignIn();
+            }
+        }
+
+
+        private async void SignIn()
+        {
+            progressRing.IsActive = true;
+
+            await Task.Delay(TimeSpan.FromSeconds(0.5));
+
+            try
+            {
+                StorageFile file = await storageFolder.GetFileAsync($"{username.Text}.txt");
+                MainPage.username = username.Text;
+                CheckPassword(file);
+            }
+            catch
+            {
+                progressRing.IsActive = false;
             }
         }
     }
